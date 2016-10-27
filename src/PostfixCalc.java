@@ -6,4 +6,16 @@ package lab3;
  */
 public class PostfixCalc {
 	
+	
+	public PostfixCalc(expression){
+	this.expression = expression;
+  	}
+	
+	
+	public static void main(String[] args){
+		
+	}
+	
+	
+	
 }
