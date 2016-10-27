@@ -12,8 +12,7 @@ public class PostfixCalc {
 	private int stackSize;
 	private int topOfStack;
 	
-	public PostfixCalc(expression){
-    this.expression = expression;
+	public PostfixCalc(){
   }
 	
 	
