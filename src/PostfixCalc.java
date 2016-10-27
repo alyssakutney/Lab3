@@ -8,6 +8,9 @@ import java.util.ArrayList;
  */
 public class PostfixCalc {
 	private String expression;
+	private String[] stackArray;
+	private int stackSize;
+	private int topOfStack;
 	
 	public PostfixCalc(expression){
     this.expression = expression;
