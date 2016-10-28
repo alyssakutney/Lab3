@@ -6,23 +6,23 @@ import java.util.Scanner;
  *
  */
 public class KnightsTour {
-		static int size; //size of how many numbers will be in each row and column
-		static int startX;
-		static int startY;
-		static int board[][]; // matrix board for the game
-		static Scanner sc = new Scanner(System.in);
+  static int size; //size of how many numbers will be in each row and column
+  static int startX;
+  static int startY;
+  static int board[][]; // matrix board for the game
+  static Scanner sc = new Scanner(System.in);
 		
 		
-			KnightsTour(int size, int startX, int startY){ // may also need to have a parameter to enter 
+  KnightsTour(int size, int startX, int startY){ // may also need to have a parameter to enter 
 														 //in the coordinate of the knight's start position
-				if(size <= 3){
-					throw new IndexOutOfBoundsException("Size must be over 3.");
-				}else{
-					this.size = size;
-				}		
-				board = new int[size][size];
+	if(size <= 3){
+	  throw new IndexOutOfBoundsException("Size must be over 3.");
+	}else{
+	  this.size = size;
+	}		
+		board = new int[size][size];
 				
-			}
+  }
 			
 			public static void main(String[] args){
 		//		KnightsTour knightTour = new KnightsTour(3,2,0);
