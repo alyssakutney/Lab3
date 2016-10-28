@@ -25,7 +25,6 @@ public class ArrayStack {
  	if(topOfStack >= 0 ){
  	  displayStack();
  	  System.out.println();
- 	  
  	  return stackArray[topOfStack--];
  	}else{
  	  displayStack();

@@ -6,15 +6,41 @@
  *
  */
 public class PostfixCalc extends ArrayStack{
+  private String[] stackArray;
+ 	private static int stackSize;
+ 	private int topOfStack;
+ 	
+ 	
+ 	
+   public void push(String input){
+  	if(topOfStack + 1 < stackSize){
+  	  topOfStack++;
+  	  stackArray[topOfStack] = input;
+   	}
+    }
+    
+    public String pop(){
+  	if(topOfStack >= 0 ){
+  	  displayStack();
+  	  System.out.println();
+  	  return stackArray[topOfStack--];
+  	}else{
+  	  displayStack();
+  	  System.out.println("The stack is empty!");
+  	  return "-1";
+  	  }
+    }
+    
+    public static void displayStack(){
+  	for(int i = 0; i < stackSize; i++){
+  	  System.out.println(i);
+  	}
+    }
   	String expression;
   	
   	PostfixCalc(String expression){
   	  this.expression = expression;
   	}
-  	
-  	
-  	
-	ArrayStack stackArray = new ArrayStack(10);
 	
 	public static void main(String[] args){
 	  displayStack();
