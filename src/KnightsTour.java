@@ -41,19 +41,7 @@ public class KnightsTour {
 		
 		
 		
-		
-		
-		
-		
 	}
-			
-			
-	
-	
-			
-			
-			
-			
 			
 			
 }
