@@ -1,4 +1,4 @@
-package lab3;
+
 /**
  * The PostfixCalc class will provide the user with a Postfix Calculator that will
  * turn their input expression of an infix expression and change it to a postfix expression.
@@ -6,18 +6,25 @@ package lab3;
  *
  */
 public class PostfixCalc extends ArrayStack{
+  	String expression;
   	
-  
-	public PostfixCalc(){
-	  
-	  this.stackArray = stackArray;
-  }
+  	PostfixCalc(String expression){
+  	  this.expression = expression;
+  	}
+  	
+  	
+  	
+	ArrayStack stackArray = new ArrayStack(10);
 	
 	public static void main(String[] args){
-	  ArrayStack stackArray = new ArrayStack(10);
+	  displayStack();
 	  
-	  stackArray.push
 	}
 
+	public void calculate(){
+	  
+	}
+
+	
 	
 }

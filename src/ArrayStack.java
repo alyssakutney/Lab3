@@ -6,7 +6,7 @@ import java.util.Arrays;
  */
 public class ArrayStack {
   private String[] stackArray;
-	private int stackSize;
+	private static int stackSize;
 	private int topOfStack;
 	
 	ArrayStack(int stackSize){
@@ -34,7 +34,7 @@ public class ArrayStack {
  	  }
    }
    
-   public void displayStack(){
+   public static void displayStack(){
  	for(int i = 0; i < stackSize; i++){
  	  System.out.println(i);
  	}
