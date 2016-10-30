@@ -6,7 +6,8 @@
  *
  */
 public class PostfixCalc{
-  private int[] intStack;
+}
+  	private IntStack intStack = new IntStack();
  	private static int stackSize;
  	private int topOfStack;
   	String expression;
@@ -21,35 +22,13 @@ public class PostfixCalc{
 	//  PostfixCalc("432+");
 	  displayStack();
 	}
-	
-   public void push(String input){
-  	if(topOfStack + 1 < stackSize){
-  	  topOfStack++;
-  	  intStack[topOfStack] = input;
-   	}
-    }
-    
-    public String pop(){
-  	if(topOfStack >= 0 ){
-  	  displayStack();
-  	  System.out.println();
-  	  return intStack[topOfStack--];
-  	}else{
-  	  displayStack();
-  	  System.out.println("The stack is empty!");
-  	  return "-1";
-  	  }
-    }
-    
-    public static void displayStack(){
-  	for(int i = 0; i < stackSize; i++){
-  	  System.out.println(i);
-  	}
-    }
-
-    
-    
-    
+	  
+    /**
+     * STILL WORKING ON THIS AT THE MOMENT !!!!!!!!!!!!!!
+     * @param postfix
+     * @param x
+     * @return
+     */
 	public int calculate(String postfix, int x){
 		int i = 0;
 		
@@ -63,8 +42,8 @@ public class PostfixCalc{
 						intStack.push(x);
 						break;
 					case '+':
-						double b = intStack.pop();
-						double a = intStack.pop();
+						int b = intStack.pop();
+						int a = intStack.pop();
 						intStack.push(a+b);
 						break;
 					case '$':
@@ -84,11 +63,6 @@ public class PostfixCalc{
 						b = intStack.pop();
 						a = intStack.pop();
 						intStack.push(a/b);
-						break;
-					case '^':
-						b = intStack.pop();
-						a = intStack.pop();
-						intStack.push(Math.pow(a,b));
 						break;
 					}
 	}
