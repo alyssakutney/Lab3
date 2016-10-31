@@ -24,7 +24,8 @@ public class PostfixCalc{
 	}
 	  
     /**
-     * STILL WORKING ON THIS AT THE MOMENT !!!!!!!!!!!!!!
+     * With this method it should allow the array integer stack to parse through the operators and
+     * operands, and 
      * @param postfix
      * @param x
      * @return
