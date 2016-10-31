@@ -6,7 +6,7 @@
  *
  */
 public class PostfixCalc{
-}
+
   	private IntStack intStack = new IntStack();
  	private static int stackSize;
  	private int topOfStack;
@@ -29,11 +29,11 @@ public class PostfixCalc{
      * @param x
      * @return
      */
-	public int calculate(String postfix, int x){
+	public int calculate(String postExpression, int x){
 		int i = 0;
 		
-		for(int n=0;n<postfix.length();n++){
-			char ch = postfix.charAt(n);
+		for(int n=0; n< postExpression.length();n++){
+			char ch = postExpression.charAt(n);
 			if('0'<=ch && ch<='9')
 				intStack.push(ch-'0');
 			else {
@@ -65,7 +65,17 @@ public class PostfixCalc{
 						intStack.push(a/b);
 						break;
 					}
+				}
+			}
+		return intStack.pop();
 	}
-	
+	 
+			
+			
+		    public static void displayStack(){
+		  	for(int i = 0; i < stackSize; i++){
+		  	  System.out.println(i);
+		  	}
+		    }
 	
 }
