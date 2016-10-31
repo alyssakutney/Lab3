@@ -39,6 +39,7 @@ public class KnightsTour {
 		int[] x_points = {2,1,-1,-2,-2,-1,1,2};		//will work with int[] y_points, considering each matching index as coordinates
 		int[] y_points = {1,2,2,1,-1,-2,-2,-1};		//for which way the knight can move
 		
+		//blah blah blah
 		
 		
 	}
