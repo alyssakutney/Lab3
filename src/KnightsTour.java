@@ -53,7 +53,7 @@ public class KnightsTour {
 	 * @param yMove
 	 * @return
 	 */
-	public static boolean solveTour(int startX, int startY, int movei, int sol[][], int xMove[],
+	public static boolean solveTour(int startX, int startY, int movei, int solBoard[][], int xMove[],
         int yMove[]) {
 	  int k;
 	  int next_x;
@@ -66,13 +66,13 @@ public class KnightsTour {
 	  	  next_x = startX + xMove[k];
 	  	  next_y = startY + yMove[k];
 	  	  if (startX >= 0 && startX < size && startY >= 0 &&
-              startY < size && sol[startX][startY] == -1) {
-	  		sol[next_x][next_y] = movei;
+              startY < size && solBoard[startX][startY] == -1) {
+	  		solBoard[next_x][next_y] = movei;
 	  		if (solveTour(next_x, next_y, movei + 1,
-	  			sol, xMove, yMove))
+	  			solBoard, xMove, yMove))
 	  		  return true;
 	  		else
-	  		  sol[next_x][next_y] = -1;// backtracking
+	  		  solBoard[next_x][next_y] = -1;// backtracking
 	  	  }
 	  	}
 
