@@ -55,7 +55,9 @@ public class KnightsTour {
 	 */
 	public static boolean solveTour(int startX, int startY, int movei, int sol[][], int xMove[],
         int yMove[]) {
-	  int k, next_x, next_y;
+	  int k;
+	  int next_x;
+	  int next_y;
 	  	if (movei == startX * startY)
 	  	  return true;
 	  	
