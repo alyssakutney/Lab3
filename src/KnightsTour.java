@@ -38,11 +38,47 @@ public class KnightsTour {
 		
 		int[] x_points = {2,1,-1,-2,-2,-1,1,2};		//will work with int[] y_points, considering each matching index as coordinates
 		int[] y_points = {1,2,2,1,-1,-2,-2,-1};		//for which way the knight can move
+	
+	}
 		
-		//blah blah blah
-		
-		
+	
+	/**
+	 * This method will solve the Knight's tour problem with by moving 
+	 * through the board, and visiting each spot on the board.
+	 * @param startX: starting x coordinate
+	 * @param startY: starting y coordinate
+	 * @param movei: number of moves
+	 * @param sol
+	 * @param xMove
+	 * @param yMove
+	 * @return
+	 */
+	public static boolean solveTour(int startX, int startY, int movei, int sol[][], int xMove[],
+        int yMove[]) {
+	  int k, next_x, next_y;
+	  	if (movei == startX * startY)
+	  	  return true;
+	  	
+	  	
+	  	for (k = 0; k < 8; k++) {
+	  	  next_x = startX + xMove[k];
+	  	  next_y = startY + yMove[k];
+	  	  if (startX >= 0 && startX < size && startY >= 0 &&
+              startY < size && sol[startX][startY] == -1) {
+	  		sol[next_x][next_y] = movei;
+	  		if (solveTour(next_x, next_y, movei + 1,
+	  			sol, xMove, yMove))
+	  		  return true;
+	  		else
+	  		  sol[next_x][next_y] = -1;// backtracking
+	  	  }
+	  	}
+
+	  	return false;
 	}
 			
-			
+	
+	
+	
+	
 }
