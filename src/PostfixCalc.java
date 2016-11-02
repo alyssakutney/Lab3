@@ -14,12 +14,12 @@ public class PostfixCalc{
   	private int a;
   	private int b;
  	
-	private void PostfixCalc(String expression){
-  	  this.expression = expression;
+	private static void PostfixCalc(String expression){
+  	  expression = expression;
   	}
 	
 	public static void main(String[] args){
-	//  PostfixCalc("432+");
+	  PostfixCalc("432+");
 	  displayStack();
 	}
 	  

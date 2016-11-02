@@ -1,86 +1,102 @@
+import java.util.Random;
 
-import java.util.Scanner;
 /**
  * 
  * @author kutneya1
  *
  */
 public class KnightsTour {
-  static int size; //size of how many numbers will be in each row and column
-  static int startX;
-  static int startY;
-  static int board[][]; // matrix board for the game
-  static Scanner sc = new Scanner(System.in);
-		
-		
-  KnightsTour(int size, int startX, int startY){ // may also need to have a parameter to enter 
-														 //in the coordinate of the knight's start position
-	if(size <= 3){
-	  throw new IndexOutOfBoundsException("Size must be over 3.");
-	}else{
-	  this.size = size;
-	}		
-		board = new int[size][size];
-				
-  }
-			
-			public static void main(String[] args){
-		//		KnightsTour knightTour = new KnightsTour(3,2,0);
-				
-			}
-			
-	static void printBoard(){ //just for now, not sure if keeping
-		for(int x=0; x < size; x++){
-			for(int y =0; y < size; y++){
-					System.out.println(board[x][y] + " ");
-			}
-		}
-		
-		int[] x_points = {2,1,-1,-2,-2,-1,1,2};		//will work with int[] y_points, considering each matching index as coordinates
-		int[] y_points = {1,2,2,1,-1,-2,-2,-1};		//for which way the knight can move
+  private int[][] board;
+  private int size;
+  private int possibleMoves = 8;
+  private int[][] coordinateMoves ={{2,1},{2,-1},{1,2},{1,-2},{-1,2},{-1,-2},{-2,1},{-2,-1}};
+  private int moveNumber;	 
+	 
+  /** 
+   * This is the constructor of the class, this allows the user to input a size
+   * for the 
+   * @param size
+   */
+	public KnightsTour(int size){
+	this.size = size;
+	this.size = size;
+	 board = new int[size][size];
+	 moveNumber=0;
+	 }
+	 
 	
-	}
-		
+	 public int[] startCoordinate(){
+	 Random generator = new Random();
+	 int[] pos = new int[2];
+	 pos[0] = generator.nextInt(size);
+	 pos[1] = generator.nextInt(size);
+	 board[ pos[0] ][ pos[1] ] = ++moveNumber;
+	 return pos;
+	 }
+	 
+	 public int[] nextMove(int[] pos){
+	 int xStart = pos[0];
+	 int yStart = pos[1];
+	 int access = possibleMoves;
+	 
+	 for (int i=0 ; i< possibleMoves ; i++){
+	 int newX = xStart + coordinateMoves[i][0];
+	 int newY = yStart + coordinateMoves[i][1];
+	 int newAccessibility = getAccessibility(newX, newY);
+	 
+	 if( inRangeAndEmpty(newX, newY) && newAccessibility < access ){
+	 pos[0] = newX;
+	 pos[1] = newY;
+	 access = newAccessibility;
+	 }
+	 }
+	 
+	 board[ pos[0] ][ pos[1] ] = ++moveNumber;
+	 return pos;
+	 }
+	 
+	 private int getAccessibility(int x, int y){
+	 int access = 0;
+	 for(int i=0; i < possibleMoves ; i++){
+	 if ( inRangeAndEmpty(x + coordinateMoves[i][0], y + coordinateMoves[i][1] ) )
+	 access++;
+	 }
+	 return access;
+	 }
+	 
+	 private boolean inRangeAndEmpty(int x, int y){
+	 return ( x < size  && x >= 0 && y < size   && y >=0  &&
+	 board[x][y] == 0 );
+	 }
+	 
+	 public void printBoard(){
+	 for (int i=0; i < size ; i++){
+	 for (int j=0; j < size ; j++){
+	 System.out.print(board[i][j] + "\t");
+	 }
+	 System.out.print("\n");
+	 }
+	 }
+	 
+	 public int getSize(){
+	 return size * size;
+	 }
 	
-	/**
-	 * This method will solve the Knight's tour problem with by moving 
-	 * through the board, and visiting each spot on the board.
-	 * @param startX: starting x coordinate
-	 * @param startY: starting y coordinate
-	 * @param movei: number of moves
-	 * @param sol
-	 * @param xMove
-	 * @param yMove
-	 * @return
-	 */
-	public static boolean solveTour(int startX, int startY, int movei, int solBoard[][], int xMove[],
-        int yMove[]) {
-	  int k;
-	  int next_x;
-	  int next_y;
-	  	if (movei == startX * startY)
-	  	  return true;
-	  	
-	  	
-	  	for (k = 0; k < 8; k++) {
-	  	  next_x = startX + xMove[k];
-	  	  next_y = startY + yMove[k];
-	  	  if (startX >= 0 && startX < size && startY >= 0 &&
-              startY < size && solBoard[startX][startY] == -1) {
-	  		solBoard[next_x][next_y] = movei;
-	  		if (solveTour(next_x, next_y, movei + 1,
-	  			solBoard, xMove, yMove))
-	  		  return true;
-	  		else
-	  		  solBoard[next_x][next_y] = -1;// backtracking
-	  	  }
-	  	}
-
-	  	return false;
-	}
-			
-	
-	
-	
-	
+	 
+	 // Initialize board 
+	public static void main(String[] args) {
+	  
+	 KnightsTour knightsTour = new KnightsTour(7);
+	 int[] position = knightsTour.startCoordinate();
+	 
+	 // Determine the next position
+	 for (int i=1; i< knightsTour.getSize() ; i++){
+	 position = knightsTour.nextMove(position);
+	 }
+	 
+	 // Print board
+	 knightsTour.printBoard();
+	 
+	 }
+  
 }
