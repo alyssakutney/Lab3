@@ -42,12 +42,12 @@ public class KnightsTour {
 	 for (int i=0 ; i< possibleMoves ; i++){
 	 int newX = xStart + coordinateMoves[i][0];
 	 int newY = yStart + coordinateMoves[i][1];
-	 int newAccessibility = getAccessibility(newX, newY);
+	 int newAccess = getAccessibility(newX, newY);
 	 
-	 if( inRangeAndEmpty(newX, newY) && newAccessibility < access ){
+	 if(inBoundsAndEmpty(newX, newY) && newAccess < access ){
 	 pos[0] = newX;
 	 pos[1] = newY;
-	 access = newAccessibility;
+	 access = newAccess;
 	 }
 	 }
 	 
@@ -58,13 +58,13 @@ public class KnightsTour {
 	 private int getAccessibility(int x, int y){
 	 int access = 0;
 	 for(int i=0; i < possibleMoves ; i++){
-	 if ( inRangeAndEmpty(x + coordinateMoves[i][0], y + coordinateMoves[i][1] ) )
+	 if ( inBoundsAndEmpty(x + coordinateMoves[i][0], y + coordinateMoves[i][1] ) )
 	 access++;
 	 }
 	 return access;
 	 }
 	 
-	 private boolean inRangeAndEmpty(int x, int y){
+	 private boolean inBoundsAndEmpty(int x, int y){
 	 return ( x < size  && x >= 0 && y < size   && y >=0  &&
 	 board[x][y] == 0 );
 	 }
@@ -86,7 +86,7 @@ public class KnightsTour {
 	 // Initialize board 
 	public static void main(String[] args) {
 	  
-	 KnightsTour knightsTour = new KnightsTour(7);
+	 KnightsTour knightsTour = new KnightsTour(6);
 	 int[] position = knightsTour.startCoordinate();
 	 
 	 // Determine the next position

@@ -71,6 +71,9 @@ public class PostfixCalc{
 		return intStack.pop();
 	}
 	 
+		public String displayExpression(){
+		  return expression;
+		}
 			
 			
 		    public static void displayStack(){
