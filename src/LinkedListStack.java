@@ -48,7 +48,12 @@ public class LinkedListStack<T> {
     }
 
     public boolean isEmpty() {
-        return (list.size() == 0);
+      	if(list.size()== 0){
+      	  return true;
+      	}else{
+      	  return false;
+      	}
+        
     }
 
     public void clear(){

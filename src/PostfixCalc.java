@@ -20,7 +20,7 @@ public class PostfixCalc {
 
     
     public static void main(String[] args){
-      expression = "324+-";
+      expression = "23+";
       PostfixCalc calc = new PostfixCalc(expression);
      String finalCalc =  calc.calculate();
       System.out.println(finalCalc);
@@ -33,48 +33,54 @@ public class PostfixCalc {
  {
      String output = "";
      char character = ' ';
-     int digit = 0;
+     double digit = 0;
 
+     if(expression.length() == 0){
+       System.out.println("The stack is empty");
+     }else{
      for(int x = 0; x < expression.length(); x++)
      {
          if(Character.isDigit(expression.charAt(x))) {
-                 digit = expression.charAt(x);
+                 digit = Double.parseDouble("" + expression.charAt(x));
          }
          character = expression.charAt(x);
+         if(Character.isDigit(character)) {
+             digit = Double.parseDouble("" + character);
+             myLLStack.push(digit);
+         }
          if(expression.charAt(x) == digit)
          {
              myLLStack.push(digit);
          }
          else if(character == '*')
          {
-             int tmp =  myLLStack.pop() * myLLStack.pop();
-             myLLStack.push(tmp);
+             double temp =  (double) myLLStack.pop() * (double) myLLStack.pop();
+             myLLStack.push(temp);
          }
          else if(character == '/')
          {
-             double tmp =  myLLStack.pop() / myLLStack.pop();
-             myLLStack.push(tmp);
+             double temp = (double)myLLStack.pop() / (double)myLLStack.pop();
+             myLLStack.push(temp);
          }
          else if(character == '+')
          {
-             double tmp = (double) myLLStack.pop() + (double) myLLStack.pop();
-             myLLStack.push(tmp);
+             double temp = (double) myLLStack.pop() + (double) myLLStack.pop();
+             myLLStack.push(temp);
          }
          else if(character == '-')
          {
-             double tmp = (double) myLLStack.pop() - (double) myLLStack.pop();
-             myLLStack.push(tmp);
+             double temp = (double) myLLStack.pop() - (double) myLLStack.pop();
+             myLLStack.push(temp);
          }
+     	}
      }
 
-     
-     
-     while(!myLLStack.isEmpty())
-     {
-         output = output + myLLStack.pop();
-     }
+     	while(!myLLStack.isEmpty())
+     	{
+     	  output = output + myLLStack.pop();
+     	}
 
-     return output;
- }
+     	return output;
+ 	}
         
 }
