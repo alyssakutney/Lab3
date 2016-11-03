@@ -12,6 +12,7 @@ public class PostfixCalc {
     private static final String mult = "*";
     private static final String div = "/";
     static LinkedListStack myLLStack = new LinkedListStack<>();
+    static LinkedListStack operatorStack = new LinkedListStack<>();
     
     public PostfixCalc(String postFixExp){
       expression = postFixExp;
@@ -66,6 +67,8 @@ public class PostfixCalc {
          }
      }
 
+     
+     
      while(!myLLStack.isEmpty())
      {
          output = output + myLLStack.pop();

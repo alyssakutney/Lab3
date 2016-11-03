@@ -1,60 +1,58 @@
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+
 public class LinkedListStack<T> {
-    private int size;
-    private Node<T> head;
-
+  LinkedList<T> list;
+    private int cursor;
+    
     public LinkedListStack() {
-        head = null;
-        size = 0;
+        list = new LinkedList<T>();
+        cursor = -1;
     }
 
-    public void push(T element) {
-        if(head == null) {
-            head = new Node(element);
-        } else {
-            Node<T> newNode = new Node(element);
-            newNode.next = head;
-            head = newNode;
+    public void push(T item) {
+        if(list.size() == 0){
+          list.add(item);
+        }else{
+          list.add(0, item);
         }
-
-        size++;
     }
 
+    public T first(){
+      if(list.size()== 0){
+    	return null;
+      }else{
+    	cursor = 0;
+    	return list.get(cursor);
+      }
+    }
+    
     public T pop() {
-        if(head == null)
-            return null;
-        else {
-            T topData = head.data;
-
-            head = head.next;
-            size--;
-
-            return topData;
+        if(list.isEmpty()){
+          throw new NoSuchElementException();
         }
+        return list.remove(0);
     }
 
-    public T top() {
-        if(head != null)
-            return head.data;
-        else
-            return null;
+    public T next(){
+      if(cursor <0 || cursor == (list.size()-1)){
+    	return null;
+      }else{
+    	cursor++;
+    	return list.get(cursor);
+      }
     }
-
+    
     public int size() {
-        return size;
+        return list.size();
     }
 
     public boolean isEmpty() {
-        return size == 0;
+        return (list.size() == 0);
     }
 
-    private class Node<T> {
-        private T data;
-        private Node<T> next;
-
-        public Node(T data) {
-            this.data = data;
-        }
-
+    public void clear(){
+      list.clear();
     }
 
 }
