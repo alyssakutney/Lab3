@@ -141,16 +141,16 @@ public class KnightsTour {
 	 // Initialize board 
 	public static void main(String[] args) {
 	  
-	  KnightsTour knightsTour = new KnightsTour(7);
-	 //int[] position = knightsTour.startCoordinate();
+	  KnightsTour knightsTour = new KnightsTour(11);
+	 int[] position = knightsTour.startCoordinate();
 	 
 	 // Determine the next position
-	// for (int i=1; i< knightsTour.getSize() ; i++){
-	// position = knightsTour.nextMove(position);
-	// }
+	for (int i=1; i< knightsTour.getSize() ; i++){
+	position = knightsTour.nextMove(position);
+	}
 	 
-	 // Print board
-	// knightsTour.printBoard();
+	 //Print board
+	knightsTour.printBoard();
 	 
 	 }
   
