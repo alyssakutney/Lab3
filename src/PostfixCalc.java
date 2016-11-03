@@ -20,7 +20,7 @@ public class PostfixCalc {
 
     
     public static void main(String[] args){
-      expression = "23+";
+      expression = "147*-2+";
       PostfixCalc calc = new PostfixCalc(expression);
      String finalCalc =  calc.calculate();
       System.out.println(finalCalc);
@@ -54,32 +54,42 @@ public class PostfixCalc {
          }
          else if(character == '*')
          {
-             double temp =  (double) myLLStack.pop() * (double) myLLStack.pop();
-             myLLStack.push(temp);
+           	double right = (double) myLLStack.pop();
+           	double left = (double) myLLStack.pop();
+           	double result = left* right;
+             myLLStack.push(result);
          }
          else if(character == '/')
          {
-             double temp = (double)myLLStack.pop() / (double)myLLStack.pop();
-             myLLStack.push(temp);
+           	double right = (double) myLLStack.pop();
+         	double left = (double) myLLStack.pop();
+         	double result = left / right ;
+           myLLStack.push(result);
          }
          else if(character == '+')
          {
-             double temp = (double) myLLStack.pop() + (double) myLLStack.pop();
-             myLLStack.push(temp);
+           double right = (double) myLLStack.pop();
+           double left = (double) myLLStack.pop();
+           double result = left + right ;
+           myLLStack.push(result);
          }
          else if(character == '-')
          {
-             double temp = (double) myLLStack.pop() - (double) myLLStack.pop();
-             myLLStack.push(temp);
+           double right = (double) myLLStack.pop();
+           double left = (double) myLLStack.pop();
+           double result = left - right ;
+            myLLStack.push(result);
          }
      	}
      }
 
      	while(!myLLStack.isEmpty())
      	{
+ 
      	  output = output + myLLStack.pop();
      	}
 
+     	System.out.println(expression);
      	return output;
  	}
         
