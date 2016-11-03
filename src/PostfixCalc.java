@@ -1,4 +1,3 @@
-
 /**
  * The PostfixCalc class will provide the user with a Postfix Calculator that will
  * turn their input expression of an infix expression and change it to a postfix expression.
@@ -7,19 +6,20 @@
  */
 public class PostfixCalc{
 
-  	private IntStack intStack = new IntStack();
+  	private static IntStack intStack = new IntStack();
  	private static int stackSize;
  	private int topOfStack;
-  	String expression;
+  	static String expression;
   	private int a;
   	private int b;
  	
-	private static void PostfixCalc(String expression){
-  	  expression = expression;
+	private static void PostfixCalc(String exp){
+  	  expression = exp;
   	}
 	
 	public static void main(String[] args){
-	  PostfixCalc("432+");
+	  calculate("4+3-1", 3);
+	  displayExpression();
 	  displayStack();
 	}
 	  
@@ -30,13 +30,12 @@ public class PostfixCalc{
      * @param x
      * @return
      */
-	public int calculate(String postExpression, int x){
-		int i = 0;
+	public static int calculate(String postExpression, int x){
 		
-		for(int n=0; n< postExpression.length();n++){
+		for(int n=0; n< postExpression.length(); n++){
 			char ch = postExpression.charAt(n);
 			if('0'<=ch && ch<='9')
-				intStack.push(ch-'0');
+				intStack.push(ch='0');
 			else {
 				switch(ch) {
 					case 'x':
@@ -71,15 +70,17 @@ public class PostfixCalc{
 		return intStack.pop();
 	}
 	 
-		public String displayExpression(){
-		  return expression;
+	
+	
+		public static String displayExpression(){
+		  System.out.println(""+ expression);
 		}
 			
 			
-		    public static void displayStack(){
-		  	for(int i = 0; i < stackSize; i++){
-		  	  System.out.println(i);
-		  	}
-		    }
+		public static void displayStack(){
+		  for(int i = 0; i < stackSize; i++){
+		  	 System.out.println(i);
+		  }
+		}
 	
 }
