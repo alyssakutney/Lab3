@@ -73,7 +73,7 @@ public class PostfixCalc{
 	 
 	
 	
-		public static String displayExpression(){
+		public static void displayExpression(){
 		  System.out.println(""+ expression);
 		}
 			
