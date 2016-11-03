@@ -35,7 +35,6 @@ public class OperatorStack {
    	}
      }
 
-     
      public void clear(){
        topOfStack = -1;
      }
