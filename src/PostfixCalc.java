@@ -7,6 +7,7 @@
 public class PostfixCalc{
 
   	private static IntStack intStack = new IntStack();
+  	
  	private static int stackSize;
  	private int topOfStack;
   	static String expression;
@@ -32,7 +33,7 @@ public class PostfixCalc{
      */
 	public static int calculate(String postExpression, int x){
 		
-		for(int n=0; n< postExpression.length(); n++){
+		for(int n = 0; n < postExpression.length(); n++){
 			char ch = postExpression.charAt(n);
 			if('0'<=ch && ch<='9')
 				intStack.push(ch='0');
