@@ -31,7 +31,7 @@ public class LinkedListStack<T> {
         if(list.isEmpty()){
           throw new NoSuchElementException();
         }
-        return list.remove(0);
+        return (T) list.remove(0);
     }
 
     public T next(){
@@ -49,6 +49,7 @@ public class LinkedListStack<T> {
 
     public boolean isEmpty() {
       	if(list.size()== 0){
+      	  
       	  return true;
       	}else{
       	  return false;

@@ -20,7 +20,7 @@ public class PostfixCalc {
 
     
     public static void main(String[] args){
-      expression = "147*-2+";
+      expression = "133*+4-";
       PostfixCalc calc = new PostfixCalc(expression);
      String finalCalc =  calc.calculate();
       System.out.println(finalCalc);
