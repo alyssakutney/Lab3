@@ -16,7 +16,7 @@ public class InfixCalc {
   }
   
   public String evaluate(String expression){
-	double result;
+	double finalResult;
 	
 	for(char ch: expression.toCharArray()){
 	  if(ch >= 0 && ch <= 9){
@@ -26,8 +26,19 @@ public class InfixCalc {
 	  }else if(ch == '+' || ch == '-' || ch == '/' || ch == '*'){
 		if(opStack.isEmpty()){
 		  opStack.push(ch);
-		}else if(operatorOrder(ch) > operatorOrder((char) opStack.first())){
+		}else if(operatorOrder(ch) > operatorOrder((Character) opStack.first())){
 		  opStack.push(ch);
+	  }else{
+		while(!opStack.isEmpty() && operatorOrder(ch) <= operatorOrder((Character) opStack.first())){
+		 finalResult = calculate(valueOf((Character) valStack.pop()), valueOf((Character) valStack.pop()), (Character) opStack.pop());
+		 valStack.push((char) finalResult); 
+		}
+		opStack.push(ch);
+	  }
+	}else if(ch == ')'){
+	  while((char) opStack.first() != '('){
+		finalResult = calculate(valueOf((Character) valStack.pop()), valueOf((Character) valStack.pop()), (Character) opStack.pop());
+		valStack.push((char) finalResult);
 	  }
 	}
 	 }
@@ -37,9 +48,37 @@ public class InfixCalc {
 	return output;
   }
   
- 
+ public static double valueOf(char var){
+   switch(var){
+   case '1': 
+	 return 1.0;
+   case '2': 
+	 return 2.0;
+   case '3': 
+	 return 3.0;
+   case '4': 
+	 return 4.0;
+   case '5': 
+	 return 5.0;
+   case '6': 
+	 return 6.0;
+   case '7': 
+	 return 7.0;
+   case '8': 
+	 return 8.0;
+   case '9': 
+	 return 9.0;
+   case '0': 
+	 return 0.0;
+   } 
+	 return 0;
+ }
   
-  private int operatorOrder(char op){
+  
+  
+  
+  
+  public int operatorOrder(char op){
 	switch(op){
 		case '(': 
 		  return 0;
@@ -58,69 +97,27 @@ public class InfixCalc {
 	return -1;
   }
   
+  public Double calculate(Double opOne, Double opTwo, char op){
+	switch(op){
+	case '+':
+	  return opOne + opTwo;
+	case '-':
+	  return opOne-opTwo;
+	case '/': 
+	  return opOne/opTwo;
+	case '*':
+	  return opOne + opTwo; 
+	}
+	return null;
+	
+  }
   
-/*public static String calculate()
-{
-   String output = "";
-   char character = ' ';
-   double digit = 0;
 
-   if(expression.length() == 0){
-     System.out.println("The stack is empty");
-   }else{
-   for(int x = 0; x < expression.length(); x++)
-   {
-       if(Character.isDigit(expression.charAt(x))) {
-               digit = Double.parseDouble("" + expression.charAt(x));
-       }
-       character = expression.charAt(x);
-       if(Character.isDigit(character)) {
-           digit = Double.parseDouble("" + character);
-           myLLStack.push(digit);
-       }
-       if(expression.charAt(x) == digit)
-       {
-           myLLStack.push(digit);
-       }
-       else if(character == '*')
-       {
-         	double right = (double) myLLStack.pop();
-         	double left = (double) myLLStack.pop();
-         	double result = left* right;
-           myLLStack.push(result);
-       }
-       else if(character == '/')
-       {
-         	double right = (double) myLLStack.pop();
-       	double left = (double) myLLStack.pop();
-       	double result = left / right ;
-         myLLStack.push(result);
-       }
-       else if(character == '+')
-       {
-         double right = (double) myLLStack.pop();
-         double left = (double) myLLStack.pop();
-         double result = left + right ;
-         myLLStack.push(result);
-       }
-       else if(character == '-')
-       {
-         double right = (double) myLLStack.pop();
-         double left = (double) myLLStack.pop();
-         double result = left - right ;
-          myLLStack.push(result);
-       }
-   	}
-   }
-
-  */
-  
-  
   public static void main(String[] args){
 	String expression = "1+(2*3)-1";
 	InfixCalc calc = new InfixCalc(expression);
 	//PostfixCalc pc = new PostfixCalc(expression);
-
+	calc.evaluate(expression);
 	
   }
   
